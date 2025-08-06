@@ -1,9 +1,9 @@
 
-struct StockDTO: Decodable {
+struct Stock {
     let symbol: String
     let name: String
     let price: Double
     let change: Double
     let changePercent: Double
-    let logo: String
+    let logoURL: String
 }

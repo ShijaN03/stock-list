@@ -3,6 +3,7 @@ import UIKit
 final class StockListBuilder {
     static func build() -> UIViewController {
         
+        let apiService = StockAPIService()
         let view = StockListView()
         let interactor = StockListInteractor()
         let presenter = StockListPresenter()
@@ -12,6 +13,7 @@ final class StockListBuilder {
         view.router = router
         
         interactor.presenter = presenter
+        interactor.apiService = apiService
         
         presenter.view = view
         
