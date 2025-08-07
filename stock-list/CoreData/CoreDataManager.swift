@@ -6,8 +6,8 @@ final class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
     
-    init() {
-        persistentContainer = NSPersistentContainer(name: "Model")
+    private init() {
+        persistentContainer = NSPersistentContainer(name: "StockModel")
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {
                 print("\(error)")
@@ -30,4 +30,6 @@ final class CoreDataManager {
             }
         }
     }
+    
 }
+

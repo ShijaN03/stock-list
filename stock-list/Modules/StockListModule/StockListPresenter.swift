@@ -3,6 +3,7 @@ class StockListPresenter: StockListPresenterProtocol {
     weak var view: StockListViewProtocol?
 
     func presentData(response: StockListResponse) {
+        
         let stocks = response.stocks.map { entity in
             StockViewModel(symbol: entity.symbol,
                            name: entity.name,

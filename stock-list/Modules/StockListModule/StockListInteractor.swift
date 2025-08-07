@@ -2,10 +2,18 @@ import Foundation
 
 class StockListInteractor: StockListInteractorProtocol {
     
+    var repo: CoreDataRepositoryProtocol?
     var presenter: StockListPresenterProtocol?
     var apiService: APIServiceProtocol?
     
     func fetchData() {
+        
+        let cachedStocks = repo?.load() ?? []
+        
+        if cachedStocks.isEmpty == false {
+            let response = StockListResponse(stocks: cachedStocks)
+            self.presenter?.presentData(response: response)
+        }
         
         apiService?.extractData { result in
             
@@ -20,6 +28,8 @@ class StockListInteractor: StockListInteractorProtocol {
                           logoURL: entity.logo)
                     
                 }
+                self.repo?.save(stocks)
+                
                 let response = StockListResponse(stocks: stocks)
                 self.presenter?.presentData(response: response)
                 

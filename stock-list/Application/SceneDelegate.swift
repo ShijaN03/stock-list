@@ -1,9 +1,4 @@
-//
-//  SceneDelegate.swift
-//  stock-list
-//
-//  Created by shijan on 06.08.2025.
-//
+
 
 import UIKit
 
