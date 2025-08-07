@@ -41,7 +41,7 @@ class StockListView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(StockListCell.self, forCellReuseIdentifier: "StockListCell")
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -65,8 +65,8 @@ extension StockListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
-        cell.textLabel?.text = self.viewModel[indexPath.row].name
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StockListCell", for: indexPath) as? StockListCell else { return UITableViewCell() }
+        cell.configure(with: viewModel[indexPath.row])
         return cell
     }
     
