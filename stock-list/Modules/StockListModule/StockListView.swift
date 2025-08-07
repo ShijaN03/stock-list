@@ -30,6 +30,10 @@ class StockListView: UIViewController {
         setUpTableView()
     }
     
+    private func setUpHeadView() {
+        
+    }
+    
     private func setUpTableView() {
         
         view.addSubview(tableView)

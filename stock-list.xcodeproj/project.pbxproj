@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4C8ABD832E4516360096F599 /* CoreDataStock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8ABD822E4516360096F599 /* CoreDataStock+CoreDataProperties.swift */; };
+		4C8ABD842E4516360096F599 /* CoreDataStock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8ABD812E4516360096F599 /* CoreDataStock+CoreDataClass.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4C8ABCE82E4377CE0096F599 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		4C8ABCCE2E4377C50096F599 /* stock-list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "stock-list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8ABCE72E4377CE0096F599 /* stock-listTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "stock-listTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8ABCF12E4377CE0096F599 /* stock-listUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "stock-listUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C8ABD812E4516360096F599 /* CoreDataStock+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataStock+CoreDataClass.swift"; path = "stock-list/CoreData/CoreDataStock+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4C8ABD822E4516360096F599 /* CoreDataStock+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataStock+CoreDataProperties.swift"; path = "stock-list/CoreData/CoreDataStock+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +95,8 @@
 		4C8ABCC52E4377C50096F599 = {
 			isa = PBXGroup;
 			children = (
+				4C8ABD812E4516360096F599 /* CoreDataStock+CoreDataClass.swift */,
+				4C8ABD822E4516360096F599 /* CoreDataStock+CoreDataProperties.swift */,
 				4C8ABCD02E4377C50096F599 /* stock-list */,
 				4C8ABCEA2E4377CE0096F599 /* stock-listTests */,
 				4C8ABCF42E4377CE0096F599 /* stock-listUITests */,
@@ -249,6 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8ABD832E4516360096F599 /* CoreDataStock+CoreDataProperties.swift in Sources */,
+				4C8ABD842E4516360096F599 /* CoreDataStock+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
