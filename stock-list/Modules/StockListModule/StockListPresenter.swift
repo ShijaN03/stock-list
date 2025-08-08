@@ -10,7 +10,8 @@ class StockListPresenter: StockListPresenterProtocol {
                            price: entity.price,
                            change: entity.change,
                            changePercent: entity.changePercent,
-                           logoURL: entity.logoURL)
+                           logoURL: entity.logoURL,
+                           isFavourite: entity.isFavourite)
             
         }
         

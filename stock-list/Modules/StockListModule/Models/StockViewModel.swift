@@ -5,4 +5,5 @@ struct StockViewModel {
     let change: Double
     let changePercent: Double
     let logoURL: String
+    var isFavourite: Bool
 }

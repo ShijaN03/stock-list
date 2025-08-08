@@ -6,4 +6,5 @@ struct Stock {
     let change: Double
     let changePercent: Double
     let logoURL: String
+    let isFavourite: Bool
 }

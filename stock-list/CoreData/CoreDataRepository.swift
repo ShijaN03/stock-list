@@ -32,6 +32,7 @@ final class CoreDataStockRepository: CoreDataRepositoryProtocol {
             entity.name = stock.name
             entity.price = stock.price
             entity.symbol = stock.symbol
+            entity.isFavourite = stock.isFavourite
         }
         
         CoreDataManager.shared.saveContext()
@@ -48,7 +49,8 @@ final class CoreDataStockRepository: CoreDataRepositoryProtocol {
                       price: $0.price,
                       change: $0.change,
                       changePercent: $0.changePercent,
-                      logoURL: $0.logoURL ?? "")
+                      logoURL: $0.logoURL ?? "",
+                      isFavourite: $0.isFavourite)
             }
         } catch {
             print("\(error)")

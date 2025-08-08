@@ -4,6 +4,7 @@ protocol StockListViewProtocol: AnyObject {
 
 protocol StockListInteractorProtocol: AnyObject {
     func fetchData()
+    func updateCoreData(with data: [StockViewModel])
 }
 
 protocol StockListPresenterProtocol: AnyObject {

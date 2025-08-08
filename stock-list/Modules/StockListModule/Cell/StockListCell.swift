@@ -5,6 +5,10 @@ class StockListCell: UITableViewCell {
     static let identifier = "StockListCell"
     
     private var isGrowing = Bool()
+    private var isFavourite = Bool()
+    
+    var favouriteButtonTapped: (() -> Void)?
+    
     private let containerView = UIView()
     private let stockImageView = UIImageView()
     private let symbolLabel = UILabel()
@@ -19,15 +23,19 @@ class StockListCell: UITableViewCell {
         setUpUI()
     }
     
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func favouriteTapped() {
+        favouriteButtonTapped?()
     }
     
     func configure(with data: StockViewModel) {
         
         isGrowing = returnDirection(change: data.change)
+        
+        isFavourite = data.isFavourite
         
         symbolLabel.text = data.symbol
         titleLabel.text = data.name
@@ -38,12 +46,16 @@ class StockListCell: UITableViewCell {
         changePercentLabel.textColor = isGrowing ? UIColor.changeIncreasingLabelColor() : UIColor.changeDecreasingLabelColor()
         
         stockImageView.load(with: URL(string: data.logoURL)!)
+        
+        favouriteButton.setImage(UIImage(systemName: isFavourite ? "star.fill" : "star"), for: .normal)
+        favouriteButton.tintColor = isFavourite ? .yellow : .gray
     }
     
     private func setUpUI() {
         setUpContainerView()
         setUpImageView()
         setUpStockTitle()
+        setUpFavouriteButton()
         setUpStockInfo()
     }
     
@@ -110,6 +122,18 @@ class StockListCell: UITableViewCell {
     
     private func setUpFavouriteButton() {
         containerView.addSubview(favouriteButton)
+        
+        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        favouriteButton.setImage(UIImage(systemName: isFavourite ? "star.fill" : "star"), for: .normal)
+        favouriteButton.tintColor = isFavourite ? .yellow : .gray
+        
+        favouriteButton.addTarget(self, action: #selector(favouriteTapped), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            favouriteButton.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 6),
+            favouriteButton.centerYAnchor.constraint(equalTo: symbolLabel.centerYAnchor)
+        ])
     }
     
     private func setUpStockInfo() {
