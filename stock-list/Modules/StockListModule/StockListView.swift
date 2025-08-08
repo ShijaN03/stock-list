@@ -41,7 +41,11 @@ class StockListView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(StockListCell.self, forCellReuseIdentifier: "StockListCell")
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        tableView.register(StockListCell.self, forCellReuseIdentifier: StockListCell.identifier)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -65,9 +69,13 @@ extension StockListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StockListCell", for: indexPath) as? StockListCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StockListCell.identifier, for: indexPath) as? StockListCell else { return UITableViewCell() }
         cell.configure(with: viewModel[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100 
     }
     
     
