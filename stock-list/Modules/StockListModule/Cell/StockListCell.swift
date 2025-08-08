@@ -4,6 +4,7 @@ class StockListCell: UITableViewCell {
     
     static let identifier = "StockListCell"
     
+    private var isGrowing = Bool()
     private let containerView = UIView()
     private let stockImageView = UIImageView()
     private let symbolLabel = UILabel()
@@ -24,11 +25,17 @@ class StockListCell: UITableViewCell {
     }
     
     func configure(with data: StockViewModel) {
+        
+        isGrowing = returnDirection(change: data.change)
+        
         symbolLabel.text = data.symbol
         titleLabel.text = data.name
         priceLabel.text = "$\(String(data.price))"
-        changeLabel.text = "$\(String(data.change))"
-        changePercentLabel.text = "(\(String(data.changePercent))%)"
+        changeLabel.text = "\(isGrowing ? "+" : "-")$\(String(abs(data.change)))"
+        changeLabel.textColor = isGrowing ? UIColor.changeIncreasingLabelColor() : UIColor.changeDecreasingLabelColor()
+        changePercentLabel.text = "(\(String(abs(data.changePercent)))%)"
+        changePercentLabel.textColor = isGrowing ? UIColor.changeIncreasingLabelColor() : UIColor.changeDecreasingLabelColor()
+        
         stockImageView.load(with: URL(string: data.logoURL)!)
     }
     
@@ -113,8 +120,8 @@ class StockListCell: UITableViewCell {
         containerView.addSubview(stackView)
         
         priceLabel.font = .boldSystemFont(ofSize: 22)
-        changeLabel.font = .systemFont(ofSize: 14)
-        changePercentLabel.font = .systemFont(ofSize: 14)
+        changeLabel.font = .boldSystemFont(ofSize: 14)
+        changePercentLabel.font = .boldSystemFont(ofSize: 14)
         
         changeStackView.axis = .horizontal
         changeStackView.spacing = 4
@@ -133,6 +140,16 @@ class StockListCell: UITableViewCell {
             stackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
+    }
+    
+    private func returnDirection(change: Double) -> Bool {
+        if change == 0.0 {
+            return true
+        } else if change > 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
 }
