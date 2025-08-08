@@ -12,6 +12,7 @@ class StockListCell: UITableViewCell {
     private let priceLabel = UILabel()
     private let changeLabel = UILabel()
     private let changePercentLabel = UILabel()
+    private let favouriteButton = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,7 +51,7 @@ class StockListCell: UITableViewCell {
         
         contentView.addSubview(containerView)
         
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = .clear
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -105,6 +106,10 @@ class StockListCell: UITableViewCell {
             stackView.leadingAnchor.constraint(equalTo: stockImageView.trailingAnchor, constant: 12),
             stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12)
         ])
+    }
+    
+    private func setUpFavouriteButton() {
+        containerView.addSubview(favouriteButton)
     }
     
     private func setUpStockInfo() {
