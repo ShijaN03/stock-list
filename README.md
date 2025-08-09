@@ -2,9 +2,9 @@
 
 Список акций с поиском и избранным, а также сохранением состояния и оффлайн режимом
 
-| Акции | Избранное | Скроллинг | Обновление |
+| Акции | Избранное | Скроллинг | Загрузка |
 |----------|-------|-------|-------------|
-| <img src="screens/stocks.png" width="150"/> | <img src="screens/favourites.png" width="150"/> | <img src="screens/scrolling.png" width="150"/> | <img src="screens/scrolling.png" width="150"/> |
+| <img src="screens/stocks.png" width="150"/> | <img src="screens/favourites.png" width="150"/> | <img src="screens/scrolling.png" width="150"/> | <img src="screens/loading.png" width="150"/> |
 
 ---
 
