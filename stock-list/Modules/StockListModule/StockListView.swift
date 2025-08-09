@@ -11,6 +11,7 @@ class StockListView: UIViewController {
     
     private var isSearching = false
     
+    private let loadingView = LoadingView()
     private let headView = UIView()
     private let searchBar = UISearchBar()
     private let stocksButton = UIButton()
@@ -54,11 +55,15 @@ class StockListView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         interactor?.fetchData()
         
         view.backgroundColor = .white
         setUpUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadingView.show(in: view)
     }
     
     func displayData(viewModel: [StockViewModel]) {
@@ -67,9 +72,11 @@ class StockListView: UIViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+        loadingView.hide()
     }
     
     private func setUpUI() {
+        
         stocksButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 35)
         setUpHeadView()
         setUpTableView()
